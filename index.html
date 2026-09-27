@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YEAM Technology — Advancing the Connected Future</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --bg:#050b1a;--bg2:#0a1628;--bg3:rgba(255,255,255,0.04);
+  --cyan:#00c8ff;--blue:#0066ff;--white:#ffffff;
+  --gray:#8899aa;--border:rgba(0,200,255,0.15);
+  --card:rgba(255,255,255,0.04);--glow:rgba(0,200,255,0.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(5,11,26,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:36px;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{padding:6px 12px;font-size:13.5px;color:var(--gray);border-radius:6px;transition:.2s;font-weight:500}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+.nav-links a.active{border-bottom:2px solid var(--cyan)}
+.nav-sep{width:1px;height:30px;background:var(--border);margin:0 10px}
+.btn-demo{background:var(--cyan);color:var(--bg)!important;padding:8px 20px!important;border-radius:6px;font-weight:700!important;font-size:13.5px!important}
+.btn-demo:hover{background:#00aade!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:.3s}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:68px}
+.page.active{display:block}
+
+/* HERO */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:80px 5% 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 65% 50%,rgba(0,100,255,.18) 0%,transparent 55%),radial-gradient(ellipse at 20% 80%,rgba(0,200,255,.1) 0%,transparent 45%),var(--bg);z-index:0}
+.hero-content{position:relative;z-index:1;max-width:560px}
+.hero-label{font-size:11px;letter-spacing:3px;color:var(--cyan);margin-bottom:18px;font-weight:600}
+.hero-label span{margin:0 8px;opacity:.5}
+.hero h1{font-size:54px;font-weight:800;line-height:1.12;margin-bottom:18px}
+.hero h1 em{font-style:normal;color:var(--cyan)}
+.hero p{font-size:15.5px;color:var(--gray);line-height:1.7;margin-bottom:30px;max-width:480px}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--cyan);color:var(--bg);padding:13px 26px;border-radius:7px;font-weight:700;font-size:14.5px;border:none;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:#00aade;transform:translateY(-2px)}
+.btn-outline{border:1.5px solid var(--cyan);color:var(--cyan);padding:12px 24px;border-radius:7px;font-weight:600;font-size:14.5px;background:transparent;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-outline:hover{background:rgba(0,200,255,.08)}
+.hero-visual{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:44%;z-index:1;opacity:.92}
+.hero-visual img{width:100%;border-radius:16px}
+.hero-vert{position:absolute;right:1%;top:30%;display:flex;flex-direction:column;gap:8px;z-index:2}
+.hero-vert span{font-size:9.5px;letter-spacing:2.5px;color:rgba(255,255,255,.25);text-transform:uppercase;writing-mode:horizontal-tb}
+
+/* STATS BAR */
+.stats-bar{background:var(--bg2);border:1px solid var(--border);border-radius:14px;margin:0 5% 60px;display:flex;justify-content:space-evenly;align-items:center;padding:22px 20px;gap:10px;flex-wrap:wrap}
+.stat-item{display:flex;align-items:center;gap:14px;padding:8px 16px}
+.stat-icon{width:44px;height:44px;border-radius:50%;background:rgba(0,200,255,.12);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:18px}
+.stat-item h3{font-size:26px;font-weight:800;color:var(--white)}
+.stat-item p{font-size:12px;color:var(--gray);margin-top:2px}
+.stat-sep{width:1px;height:40px;background:var(--border)}
+
+/* SECTIONS */
+section{padding:70px 5%}
+.sec-label{font-size:11px;letter-spacing:3px;color:var(--cyan);margin-bottom:12px;font-weight:600;text-transform:uppercase}
+.sec-title{font-size:38px;font-weight:800;line-height:1.15;margin-bottom:16px}
+.sec-title em{font-style:normal;color:var(--cyan)}
+.sec-sub{font-size:15px;color:var(--gray);line-height:1.7;max-width:600px;margin-bottom:30px}
+
+/* CARDS GRID */
+.cards-grid{display:grid;gap:16px}
+.cards-3{grid-template-columns:repeat(3,1fr)}
+.cards-4{grid-template-columns:repeat(4,1fr)}
+.cards-5{grid-template-columns:repeat(5,1fr)}
+.cards-6{grid-template-columns:repeat(6,1fr)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:.3s;cursor:pointer}
+.card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 8px 30px var(--glow)}
+.card-icon{width:42px;height:42px;border-radius:10px;background:rgba(0,200,255,.12);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:18px;margin-bottom:14px}
+.card h4{font-size:15px;font-weight:700;margin-bottom:7px}
+.card p{font-size:13px;color:var(--gray);line-height:1.6}
+.card .learn-more{font-size:12.5px;color:var(--cyan);margin-top:12px;display:inline-flex;align-items:center;gap:4px;font-weight:600}
+
+/* ECOSYSTEM */
+.ecosystem-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.eco-diagram{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center}
+.eco-center{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:var(--bg);box-shadow:0 0 40px rgba(0,200,255,.5);position:relative;z-index:2}
+.eco-ring{position:absolute;border-radius:50%;border:1px solid rgba(0,200,255,.2);animation:pulse 3s ease-in-out infinite}
+.eco-ring:nth-child(1){width:160px;height:160px;animation-delay:0s}
+.eco-ring:nth-child(2){width:260px;height:260px;animation-delay:.5s}
+.eco-ring:nth-child(3){width:360px;height:360px;animation-delay:1s}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.7}}
+.eco-modules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}
+.eco-mod{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 10px;text-align:center;font-size:12px;transition:.2s}
+.eco-mod:hover{border-color:var(--cyan);background:rgba(0,200,255,.06)}
+.eco-mod i{color:var(--cyan);font-size:16px;margin-bottom:6px;display:block}
+.eco-mod strong{font-size:12.5px}
+.eco-mod span{color:var(--gray);font-size:11px;display:block;margin-top:3px}
+
+/* INDUSTRIES */
+.industries-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.ind-card{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:.3s;cursor:pointer}
+.ind-card:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.ind-img{height:90px;background:linear-gradient(135deg,var(--bg2),#0d2040);display:flex;align-items:center;justify-content:center;font-size:28px}
+.ind-info{padding:12px}
+.ind-info h5{font-size:13px;font-weight:700;margin-bottom:4px}
+.ind-info p{font-size:11.5px;color:var(--gray)}
+
+/* WHY SECTION */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;gap:16px;align-items:flex-start;transition:.3s}
+.why-card:hover{border-color:var(--cyan)}
+.why-icon{width:44px;height:44px;flex-shrink:0;border-radius:10px;background:rgba(0,200,255,.12);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:18px}
+
+/* PRODUCTS GRID */
+.prod-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.prod-tab{padding:8px 16px;border-radius:20px;font-size:13px;cursor:pointer;border:1px solid var(--border);color:var(--gray);transition:.2s;font-weight:500}
+.prod-tab.active,.prod-tab:hover{background:var(--cyan);color:var(--bg);border-color:var(--cyan);font-weight:700}
+.prod-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;position:relative;transition:.3s;cursor:pointer}
+.prod-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 6px 25px var(--glow)}
+.prod-card .corner-arrow{position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gray)}
+.prod-card:hover .corner-arrow{background:var(--cyan);border-color:var(--cyan);color:var(--bg)}
+.prod-card .card-icon{margin-bottom:12px}
+.prod-card h4{font-size:14.5px;font-weight:700;margin-bottom:6px}
+.prod-card p{font-size:12.5px;color:var(--gray);line-height:1.5}
+
+/* SPLIT SECTION */
+.split-2{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.split-3{display:grid;grid-template-columns:1fr 1.2fr 1.1fr;gap:30px}
+
+/* FORM */
+.form-card{background:rgba(255,255,255,.05);border:1px solid rgba(0,200,255,.2);border-radius:16px;padding:32px}
+.form-card h3{font-size:20px;font-weight:700;margin-bottom:6px}
+.form-card .step-badge{font-size:11px;color:var(--cyan);float:right;background:rgba(0,200,255,.1);padding:3px 10px;border-radius:20px;font-weight:600}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:12.5px;color:var(--gray);font-weight:500}
+.form-group label .req{color:var(--cyan)}
+input,select,textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 14px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;transition:.2s;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--cyan);background:rgba(0,200,255,.06)}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.25)}
+select option{background:var(--bg2)}
+textarea{resize:vertical;min-height:90px}
+.char-count{font-size:11px;color:var(--gray);text-align:right;margin-top:4px}
+.checkbox-row{display:flex;align-items:flex-start;gap:10px;margin-top:8px;grid-column:1/-1}
+.checkbox-row input{width:16px;height:16px;flex-shrink:0;margin-top:2px}
+.checkbox-row label{font-size:12.5px;color:var(--gray)}
+.checkbox-row a{color:var(--cyan)}
+.btn-full{width:100%;background:var(--cyan);color:var(--bg);padding:14px;border:none;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;margin-top:12px;transition:.2s;grid-column:1/-1;font-family:'Inter',sans-serif}
+.btn-full:hover{background:#00aade}
+
+/* TIMELINE */
+.timeline{display:flex;gap:0;position:relative;margin-top:30px;overflow-x:auto;padding-bottom:10px}
+.tl-item{flex:1;min-width:120px;text-align:center;position:relative;padding:0 10px}
+.tl-item::before{content:'';position:absolute;top:10px;left:0;right:0;height:1px;background:var(--border)}
+.tl-dot{width:20px;height:20px;border-radius:50%;background:var(--cyan);margin:0 auto 12px;position:relative;z-index:1;box-shadow:0 0 10px var(--cyan)}
+.tl-year{font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:5px}
+.tl-text{font-size:11.5px;color:var(--gray);line-height:1.5}
+
+/* CONTACT LAYOUT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:30px;margin-top:30px}
+.contact-info-card{display:flex;gap:14px;align-items:flex-start;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;transition:.2s}
+.contact-info-card:hover{border-color:var(--cyan)}
+.ci-icon{width:40px;height:40px;flex-shrink:0;border-radius:10px;background:rgba(0,200,255,.12);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:16px}
+.ci-title{font-size:13.5px;font-weight:700;margin-bottom:4px}
+.ci-text{font-size:12.5px;color:var(--cyan)}
+.ci-sub{font-size:11.5px;color:var(--gray);margin-top:3px}
+
+/* OFFICE CARD */
+.office-card{display:flex;gap:14px;align-items:center;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:10px}
+.office-img{width:54px;height:40px;border-radius:8px;background:linear-gradient(135deg,#0d2040,#0a1628);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.office-name{font-size:13px;font-weight:700}
+.office-addr{font-size:11.5px;color:var(--gray)}
+
+/* FAQ */
+.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:14.5px;font-weight:600;background:var(--card);transition:.2s}
+.faq-q:hover{background:rgba(0,200,255,.06);color:var(--cyan)}
+.faq-q .fa{transition:.3s;color:var(--cyan)}
+.faq-a{max-height:0;overflow:hidden;transition:.3s;padding:0 20px;color:var(--gray);font-size:13.5px;line-height:1.7}
+.faq-a.open{max-height:200px;padding:14px 20px}
+
+/* BLOG CARDS */
+.blog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.3s;cursor:pointer}
+.blog-card:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.blog-thumb{height:130px;background:linear-gradient(135deg,var(--bg2),#0d2040);display:flex;align-items:center;justify-content:center;font-size:36px;position:relative}
+.blog-tag{position:absolute;top:10px;left:10px;background:var(--cyan);color:var(--bg);font-size:9.5px;padding:3px 9px;border-radius:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.blog-body{padding:16px}
+.blog-body h5{font-size:13.5px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.blog-body p{font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:10px}
+.blog-meta{font-size:11px;color:rgba(255,255,255,.3);display:flex;gap:10px}
+
+/* RESOURCES GRID */
+.res-item{display:flex;gap:14px;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;transition:.2s}
+.res-item:hover{border-color:var(--cyan)}
+.res-thumb{width:60px;height:48px;border-radius:8px;background:linear-gradient(135deg,#0d2040,#0a1628);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.res-info h6{font-size:13px;font-weight:700;margin-bottom:4px}
+.res-info p{font-size:11.5px;color:var(--gray)}
+.res-badge{display:inline-block;padding:2px 8px;background:rgba(0,200,255,.12);color:var(--cyan);border-radius:4px;font-size:10px;font-weight:600;margin-top:6px}
+.pdf-badge{background:rgba(255,80,80,.12);color:#ff6464}
+
+/* SEARCH BAR */
+.search-bar{display:flex;gap:0;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:0 5% 30px}
+.search-bar input{flex:1;background:transparent;border:none;padding:14px 20px;font-size:15px;color:var(--white)}
+.search-bar button{background:var(--cyan);color:var(--bg);padding:14px 24px;border:none;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif}
+.filter-tabs{display:flex;gap:8px;margin:0 5% 30px;flex-wrap:wrap}
+.filter-tab{padding:8px 16px;border-radius:20px;font-size:13px;border:1px solid var(--border);color:var(--gray);cursor:pointer;transition:.2s;font-weight:500}
+.filter-tab.active{background:var(--cyan);color:var(--bg);border-color:var(--cyan);font-weight:700}
+
+/* TRUST LOGOS */
+.trust-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:20px}
+.trust-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;font-size:12.5px;font-weight:600;transition:.2s}
+.trust-item:hover{border-color:var(--cyan);background:rgba(0,200,255,.05)}
+
+/* BOTTOM CTA */
+.cta-banner{background:linear-gradient(135deg,rgba(0,100,255,.12),rgba(0,200,255,.08));border:1px solid rgba(0,200,255,.2);border-radius:16px;padding:40px 40px;display:flex;justify-content:space-between;align-items:center;margin:0 5% 60px;flex-wrap:wrap;gap:20px}
+.cta-banner h3{font-size:24px;font-weight:800}
+.cta-banner p{font-size:14px;color:var(--gray);margin-top:6px}
+.cta-banner .btn-row{gap:12px}
+
+/* NEWSLETTER */
+.newsletter-row{display:flex;gap:12px;max-width:500px;margin-top:16px}
+.newsletter-row input{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:11px 16px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif}
+.newsletter-row button{background:var(--cyan);color:var(--bg);padding:11px 20px;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;white-space:nowrap}
+.newsletter-row button:hover{background:#00aade}
+
+/* LEADERSHIP */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:20px}
+.team-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center;transition:.3s}
+.team-card:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.team-photo{height:140px;background:linear-gradient(135deg,#0d2040,#0a1628);display:flex;align-items:center;justify-content:center;font-size:48px}
+.team-info{padding:16px}
+.team-info h5{font-size:15px;font-weight:700;margin-bottom:4px}
+.team-info p{font-size:12px;color:var(--cyan)}
+
+/* PARTNER LOGOS */
+.partner-logos{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px}
+.partner-badge{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:700;transition:.2s}
+.partner-badge:hover{border-color:var(--cyan);background:rgba(0,200,255,.05)}
+.partner-badge span{color:var(--cyan);font-size:11px;display:block;font-weight:400}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:20px}
+.val-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 14px;text-align:center;transition:.3s}
+.val-card:hover{border-color:var(--cyan)}
+.val-card i{color:var(--cyan);font-size:22px;margin-bottom:10px;display:block}
+.val-card h5{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.val-card p{font-size:11.5px;color:var(--gray)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 5% 20px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.3fr;gap:40px;margin-bottom:40px}
+.footer-logo img{height:30px;margin-bottom:8px}
+.footer-tagline{font-size:11px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase}
+.footer-col h6{font-size:13.5px;font-weight:700;margin-bottom:16px;color:var(--white)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{font-size:13px;color:var(--gray);transition:.2s}
+.footer-col a:hover{color:var(--cyan)}
+.footer-contact-item{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:var(--gray)}
+.footer-contact-item i{color:var(--cyan);font-size:14px;width:16px}
+.social-links{display:flex;gap:10px;margin-top:10px}
+.social-link{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gray);transition:.2s;font-size:14px}
+.social-link:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,200,255,.08)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:12.5px;color:var(--gray)}
+.footer-links{display:flex;gap:16px}
+.footer-links a{font-size:12.5px;color:var(--gray);transition:.2s}
+.footer-links a:hover{color:var(--cyan)}
+
+/* MOBILE */
+@media(max-width:1024px){
+  .cards-5,.prod-grid{grid-template-columns:repeat(3,1fr)}
+  .cards-6,.industries-grid,.values-grid,.trust-grid{grid-template-columns:repeat(3,1fr)}
+  .team-grid,.cards-4,.why-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+  .eco-modules{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:768px){
+  .nav-links,.nav-sep,.btn-demo{display:none}
+  .hamburger{display:flex}
+  .hero h1{font-size:36px}
+  .hero-visual{display:none}
+  .hero{padding:60px 5% 40px}
+  .sec-title{font-size:28px}
+  .split-2,.split-3,.contact-grid,.ecosystem-wrap,.blog-grid{grid-template-columns:1fr}
+  .cards-3,.cards-4,.cards-5,.cards-6,.prod-grid,.industries-grid,.values-grid,.trust-grid,.team-grid,.why-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .stats-bar{flex-direction:column}
+  .stat-sep{display:none}
+  .cta-banner{flex-direction:column;text-align:center}
+  .form-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="showPage('home')">
+      <img src="data:image/png;base64,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" alt="YEAM Logo">
+    </a>
+    <div class="nav-links">
+      <a href="#" class="active" id="nav-home" onclick="showPage('home')">Home</a>
+      <a href="#" id="nav-about" onclick="showPage('about')">About</a>
+      <a href="#" id="nav-solutions" onclick="showPage('solutions')">Solutions</a>
+      <a href="#" id="nav-products" onclick="showPage('products')">Products</a>
+      <a href="#" id="nav-industries" onclick="showPage('industries')">Industries</a>
+      <a href="#" id="nav-resources" onclick="showPage('resources')">Resources</a>
+      <a href="#" id="nav-contact" onclick="showPage('contact')">Contact</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="nav-sep"></div>
+      <a href="#" class="nav-links btn-demo" onclick="showPage('contact')">Request Demo &rarr;</a>
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" style="display:none;padding:16px 0;border-top:1px solid var(--border)">
+    <a href="#" style="display:block;padding:10px 5%;color:var(--gray);font-size:14px" onclick="showPage('home')">Home</a>
+    <a href="#" style="display:block;padding:10px 5%;color:var(--gray);font-size:14px" onclick="showPage('about')">About</a>
+    <a href="#" style="display:block;padding:10px 5%;color:var(--gray);font-size:14px" onclick="showPage('solutions')">Solutions</a>
+    <a href="#" style="display:block;padding:10px 5%;color:var(--gray);font-size:14px" onclick="showPage('products')">Products</a>
+    <a href="#" style="display:block;padding:10px 5%;color:var(--gray);font-size:14px" onclick="showPage('resources')">Resources</a>
+    <a href="#" style="display:block;padding:10px 5%;color:var(--gray);font-size:14px" onclick="showPage('contact')">Contact</a>
+    <a href="#" style="display:block;margin:12px 5%;padding:12px;background:var(--cyan);color:var(--bg);text-align:center;border-radius:8px;font-weight:700" onclick="showPage('contact')">Request Demo</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HOME PAGE ═══════════════════════ -->
+<div id="page-home" class="page active">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-label">PEOPLE <span>|</span> TECHNOLOGY <span>|</span> SOLUTIONS <span>|</span> A BRIGHTER TOMORROW</div>
+      <h1>Intelligent Enterprise Solutions<br>for a <em>Connected Future</em></h1>
+      <p>A next-generation ERP ecosystem powered by AI, cloud, automation and real-time analytics to help organizations work smarter, grow faster and build a more connected tomorrow.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="showPage('solutions')">Explore Solutions &rarr;</button>
+        <button class="btn-outline" onclick="showPage('contact')"><i class="fa fa-calendar"></i> Book Demo</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="data:image/jpeg;base64,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" alt="YEAM Platform">
+    </div>
+    <div class="hero-vert">
+      <span>INNOVATION</span>
+      <span>SUSTAINABILITY</span>
+      <span>PEOPLE</span>
+      <span>GREATER POSSIBILITIES</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-users"></i></div><div><h3 data-count="500">0</h3><p>Global Clients</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-building"></i></div><div><h3 data-count="30">0</h3><p>Industries Served</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-user-check"></i></div><div><h3 data-count="1">0</h3><p>Million Active Users</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-database"></i></div><div><h3 data-count="10">0</h3><p>Billion Transactions</p></div></div>
+  </div>
+
+  <!-- ECOSYSTEM -->
+  <section>
+    <div class="ecosystem-wrap">
+      <div>
+        <div class="sec-label">A UNIFIED ENTERPRISE ECOSYSTEM</div>
+        <h2 class="sec-title">Everything Your Business Needs. <em>Fully Connected.</em></h2>
+        <p class="sec-sub">From core ERP to industry-specific solutions, YEAM brings together people, processes and data on a single, intelligent platform.</p>
+        <button class="btn-outline" onclick="showPage('solutions')">See the Full Ecosystem &rarr;</button>
+      </div>
+      <div>
+        <div class="eco-diagram">
+          <div class="eco-ring"></div><div class="eco-ring"></div><div class="eco-ring"></div>
+          <div class="eco-center">Y</div>
+        </div>
+        <div class="eco-modules">
+          <div class="eco-mod"><i class="fa fa-chart-line"></i><strong>Finance</strong><span>Real-time visibility</span></div>
+          <div class="eco-mod"><i class="fa fa-users"></i><strong>HR & Payroll</strong><span>Empower your people</span></div>
+          <div class="eco-mod"><i class="fa fa-boxes-stacked"></i><strong>Inventory</strong><span>Optimize stock</span></div>
+          <div class="eco-mod"><i class="fa fa-handshake"></i><strong>CRM</strong><span>Customer relations</span></div>
+          <div class="eco-mod"><i class="fa fa-chart-bar"></i><strong>Sales</strong><span>Drive growth</span></div>
+          <div class="eco-mod"><i class="fa fa-truck"></i><strong>Supply Chain</strong><span>Global operations</span></div>
+          <div class="eco-mod"><i class="fa fa-cash-register"></i><strong>POS</strong><span>Seamless sales</span></div>
+          <div class="eco-mod"><i class="fa fa-brain"></i><strong>Analytics</strong><span>Data decisions</span></div>
+          <div class="eco-mod"><i class="fa fa-robot"></i><strong>AI Assistant</strong><span>Business copilot</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section style="padding-top:0">
+    <div class="sec-label">INDUSTRY SOLUTIONS</div>
+    <h2 class="sec-title">Built for Every Industry. Engineered for <em>What's Next.</em></h2>
+    <div class="industries-grid" style="margin-top:24px">
+      <div class="ind-card"><div class="ind-img">🏥</div><div class="ind-info"><h5>Healthcare</h5><p>Better care. Smarter operations.</p></div></div>
+      <div class="ind-card"><div class="ind-img">🛒</div><div class="ind-info"><h5>Retail</h5><p>Seamless commerce at every touchpoint.</p></div></div>
+      <div class="ind-card"><div class="ind-img">⚙️</div><div class="ind-info"><h5>Manufacturing</h5><p>Smarter production for a stronger tomorrow.</p></div></div>
+      <div class="ind-card"><div class="ind-img">🎓</div><div class="ind-info"><h5>Education</h5><p>Empowering the next generation.</p></div></div>
+      <div class="ind-card"><div class="ind-img">🏛️</div><div class="ind-info"><h5>Government</h5><p>Digital services for greater impact.</p></div></div>
+      <div class="ind-card"><div class="ind-img">🌾</div><div class="ind-info"><h5>Agriculture</h5><p>Sustainable growth for stronger communities.</p></div></div>
+    </div>
+  </section>
+
+  <!-- WHY YEAM -->
+  <section style="padding-top:0">
+    <div class="sec-label">WHY YEAM</div>
+    <h2 class="sec-title">More Than Software. <em>A Smarter Way Forward.</em></h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon"><i class="fa fa-bolt"></i></div><div><h4>Future-Ready</h4><p style="font-size:13px;color:var(--gray);margin-top:5px">Built with AI, cloud and next-gen technology.</p></div></div>
+      <div class="why-card"><div class="why-icon"><i class="fa fa-link"></i></div><div><h4>Truly Integrated</h4><p style="font-size:13px;color:var(--gray);margin-top:5px">Unified data, seamless processes, greater efficiency.</p></div></div>
+      <div class="why-card"><div class="why-icon"><i class="fa fa-heart"></i></div><div><h4>People-Centric</h4><p style="font-size:13px;color:var(--gray);margin-top:5px">Designed to empower your teams and customers.</p></div></div>
+      <div class="why-card"><div class="why-icon"><i class="fa fa-chart-line"></i></div><div><h4>Sustainable Growth</h4><p style="font-size:13px;color:var(--gray);margin-top:5px">Helping organizations create long-term value.</p></div></div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section style="padding-top:0">
+    <div class="sec-label">FEATURED PRODUCTS</div>
+    <h2 class="sec-title">Powerful Products for a <em>Smarter Enterprise.</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px">
+      <div class="card" onclick="showPage('products')"><div class="card-icon"><i class="fa fa-layer-group"></i></div><h4>YEAM ERP</h4><p>A complete, integrated ERP for modern enterprises.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card" onclick="showPage('products')"><div class="card-icon"><i class="fa fa-cloud"></i></div><h4>YEAM Cloud</h4><p>Secure, scalable and flexible for the future.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card" onclick="showPage('products')"><div class="card-icon"><i class="fa fa-chart-bar"></i></div><h4>YEAM Analytics</h4><p>Real-time insights for smarter decisions.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card" onclick="showPage('products')"><div class="card-icon"><i class="fa fa-robot"></i></div><h4>YEAM AI Assistant</h4><p>Your intelligent business copilot.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <div><h3>Ready to Transform Your Business?</h3><p>Discover how YEAM can help your organization work smarter and grow faster.</p></div>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="showPage('products')">Explore Products &rarr;</button>
+      <button class="btn-outline" onclick="showPage('contact')"><i class="fa fa-calendar"></i> Book Demo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ ABOUT PAGE ═══════════════════════ -->
+<div id="page-about" class="page">
+  <div class="hero" style="min-height:55vh">
+    <div class="hero-bg"></div>
+    <div class="hero-content" style="max-width:700px">
+      <div class="hero-label">OUR STORY <span>|</span> OUR PEOPLE <span>|</span> A BRIGHTER TOMORROW</div>
+      <h1>About <em>YEAM</em></h1>
+      <p>Building the future of enterprise technology with intelligent, connected software.</p>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-users"></i></div><div><h3>500+</h3><p>Global Clients</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-building"></i></div><div><h3>30+</h3><p>Industries Served</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-user-check"></i></div><div><h3>1M+</h3><p>Active Users</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-database"></i></div><div><h3>10B+</h3><p>Transactions Processed</p></div></div>
+  </div>
+
+  <!-- COMPANY OVERVIEW -->
+  <section>
+    <div class="split-2">
+      <div>
+        <div class="sec-label">COMPANY OVERVIEW</div>
+        <h2 class="sec-title">A More Connected <em>Tomorrow</em></h2>
+        <p class="sec-sub">YEAM is a next-generation ERP ecosystem powered by AI, cloud, automation and real-time analytics. We help organizations work smarter, grow faster, and build a more connected future.</p>
+        <button class="btn-outline">Our Story &rarr;</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start">
+        <div style="background:linear-gradient(135deg,#0d2040,#0a1628);border-radius:12px;height:160px;display:flex;align-items:center;justify-content:center;font-size:60px;grid-row:span 2">🏢</div>
+        <div class="card" style="border-color:rgba(0,200,255,.3)"><div class="card-icon"><i class="fa fa-eye"></i></div><h4>Our Vision</h4><p>A smarter, more connected world where every organization can unlock greater possibilities through intelligent technology.</p></div>
+        <div class="card" style="border-color:rgba(0,200,255,.3)"><div class="card-icon"><i class="fa fa-bullseye"></i></div><h4>Our Mission</h4><p>To deliver innovative, people-centric enterprise solutions that connect data, processes and people.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE VALUES -->
+  <section style="padding-top:0">
+    <div class="sec-label">OUR CORE VALUES</div>
+    <h2 class="sec-title">The Principles <em>That Drive Us</em></h2>
+    <div class="values-grid">
+      <div class="val-card"><i class="fa fa-lightbulb"></i><h5>Innovation</h5><p>Always exploring what's next.</p></div>
+      <div class="val-card"><i class="fa fa-heart"></i><h5>People-Centric</h5><p>Empowering our people and customers.</p></div>
+      <div class="val-card"><i class="fa fa-shield"></i><h5>Integrity</h5><p>Doing what's right, always.</p></div>
+      <div class="val-card"><i class="fa fa-star"></i><h5>Excellence</h5><p>Delivering exceptional value.</p></div>
+      <div class="val-card"><i class="fa fa-leaf"></i><h5>Sustainability</h5><p>Creating a better tomorrow.</p></div>
+      <div class="val-card"><i class="fa fa-handshake"></i><h5>Collaboration</h5><p>Stronger together.</p></div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section style="padding-top:0">
+    <div class="split-2" style="align-items:start;gap:40px">
+      <div>
+        <div class="sec-label">OUR LEADERSHIP</div>
+        <h2 class="sec-title">A Team Building <em>What's Next</em></h2>
+        <p class="sec-sub">Our leaders bring deep industry expertise and a shared passion for innovation, customers, and creating a brighter, more connected tomorrow.</p>
+        <button class="btn-outline">Meet Our Team &rarr;</button>
+      </div>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-photo">👨‍💼</div><div class="team-info"><h5>David Chen</h5><p>CEO & Co-Founder</p></div></div>
+        <div class="team-card"><div class="team-photo">👩‍💼</div><div class="team-info"><h5>Sarah Mitchell</h5><p>Chief Technology Officer</p></div></div>
+        <div class="team-card"><div class="team-photo">👨‍💼</div><div class="team-info"><h5>James Wilson</h5><p>Chief Product Officer</p></div></div>
+        <div class="team-card"><div class="team-photo">👩‍💼</div><div class="team-info"><h5>Michelle Lee</h5><p>Chief Operating Officer</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section style="padding-top:0">
+    <div class="sec-label">OUR JOURNEY</div>
+    <h2 class="sec-title">Key Milestones <em>in Our Growth</em></h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2018</div><div class="tl-text">YEAM founded with a bold vision</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2019</div><div class="tl-text">Launched core ERP platform</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2020</div><div class="tl-text">Reached 100+ customers globally</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2021</div><div class="tl-text">Expanded to Asia Pacific</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2022</div><div class="tl-text">Introduced AI-powered analytics</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2023</div><div class="tl-text">Surpassed 500+ global clients</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2024</div><div class="tl-text">Launched next-gen cloud platform</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025</div><div class="tl-text">Continuing to build a brighter tomorrow</div></div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section style="padding-top:0">
+    <div class="split-2">
+      <div>
+        <div class="sec-label">OUR TECHNOLOGY</div>
+        <h2 class="sec-title">Built on a Modern, <em>Future-Ready Stack</em></h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px">
+          <div class="card"><div class="card-icon"><i class="fa fa-cloud"></i></div><h4>Cloud</h4><p>Multi-cloud & cloud-native</p></div>
+          <div class="card"><div class="card-icon"><i class="fa fa-brain"></i></div><h4>AI & Analytics</h4><p>Machine learning & real-time insights</p></div>
+          <div class="card"><div class="card-icon"><i class="fa fa-gears"></i></div><h4>Automation</h4><p>Intelligent process automation</p></div>
+          <div class="card"><div class="card-icon"><i class="fa fa-shield"></i></div><h4>Security</h4><p>Enterprise-grade security & compliance</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-label">OUR PARTNERS & CERTIFICATIONS</div>
+        <h2 class="sec-title">Trusted by <em>Global Leaders</em></h2>
+        <div class="partner-logos">
+          <div class="partner-badge">🪟 Microsoft<span>Gold Partner</span></div>
+          <div class="partner-badge">☁️ AWS<span>Partner Network</span></div>
+          <div class="partner-badge">🔵 Google Cloud<span>Premier Partner</span></div>
+          <div class="partner-badge">🟦 SAP<span>Partner</span></div>
+          <div class="partner-badge">🏢 Deloitte<span>Technology Alliance</span></div>
+          <div class="partner-badge">✅ ISO 27001<span>Certified</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════ SOLUTIONS PAGE ═══════════════════════ -->
+<div id="page-solutions" class="page">
+  <div class="hero" style="min-height:55vh">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-label">YEAM SOLUTIONS</div>
+      <h1>Connected Solutions for <em>Every Enterprise</em></h1>
+      <p>A unified ecosystem of ERP, AI, automation, cloud, integration and analytics — built to help organizations work smarter, grow faster.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="showPage('contact')">Request Demo &rarr;</button>
+        <button class="btn-outline">Talk to an Expert</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-users"></i></div><div><h3>500+</h3><p>Global Clients</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-building"></i></div><div><h3>30+</h3><p>Industries Served</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-user-check"></i></div><div><h3>1M+</h3><p>Active Users</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-database"></i></div><div><h3>10B+</h3><p>Transactions Processed</p></div></div>
+  </div>
+
+  <section>
+    <div class="sec-label">SOLUTION CATEGORIES</div>
+    <h2 class="sec-title">End-to-End Solutions for a <em>More Connected Future</em></h2>
+    <p class="sec-sub">From core ERP to industry-specific capabilities, YEAM delivers a complete suite of solutions that connect people, processes and data across your entire enterprise.</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:24px" id="sol-grid">
+      <div class="card"><div class="card-icon"><i class="fa fa-layer-group"></i></div><h4>ERP Core</h4><p>Unify your business with a flexible, scalable ERP foundation.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-chart-line"></i></div><h4>Finance</h4><p>Complete financial management with real-time visibility.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-users"></i></div><h4>HR & Payroll</h4><p>Empower your people with modern HR and payroll solutions.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-boxes-stacked"></i></div><h4>Inventory</h4><p>Optimize inventory and resource management.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-handshake"></i></div><h4>CRM</h4><p>Build stronger customer relationships that last.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-chart-bar"></i></div><h4>Sales</h4><p>Drive revenue growth with smarter sales processes.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-truck"></i></div><h4>Supply Chain</h4><p>Connect and streamline your global supply chain operations.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-industry"></i></div><h4>Manufacturing</h4><p>Plan, produce and deliver with greater efficiency.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-cash-register"></i></div><h4>POS</h4><p>Seamless point-of-sale for retail and multi-channel businesses.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-chart-pie"></i></div><h4>Analytics</h4><p>Turn your data into smarter decisions with real-time insights.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div class="card-icon"><i class="fa fa-robot"></i></div><h4>AI Assistant</h4><p>Your intelligent copilot for greater productivity.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="split-2">
+      <div>
+        <div class="sec-label">SEAMLESS INTEGRATION</div>
+        <h2 class="sec-title">Connect Everything. Work Without <em>Limits.</em></h2>
+        <p class="sec-sub">Unify systems, data and people across your enterprise with powerful integration capabilities. YEAM connects with your existing tools and third-party applications.</p>
+        <button class="btn-outline">Learn About Integrations &rarr;</button>
+      </div>
+      <div>
+        <div class="sec-label">SECURITY & COMPLIANCE</div>
+        <h2 class="sec-title">Built on Trust. Designed for <em>What's Next.</em></h2>
+        <p class="sec-sub">Your data, your people and your business are protected with enterprise-grade security and global compliance.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px"><i class="fa fa-check-circle" style="color:var(--cyan)"></i> Data Encryption in Transit & At Rest</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px"><i class="fa fa-check-circle" style="color:var(--cyan)"></i> Role-Based Access Control</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px"><i class="fa fa-check-circle" style="color:var(--cyan)"></i> Global Compliance Standards</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px"><i class="fa fa-check-circle" style="color:var(--cyan)"></i> 24/7 Monitoring & Threat Prevention</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px"><i class="fa fa-check-circle" style="color:var(--cyan)"></i> Secure Cloud Infrastructure</div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
+          <div style="padding:8px 14px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:700">SOC 2</div>
+          <div style="padding:8px 14px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:700">ISO 27001</div>
+          <div style="padding:8px 14px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:700">GDPR Ready</div>
+          <div style="padding:8px 14px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:700">Enterprise SLA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <div><h3>Real Outcomes for <em style="font-style:normal;color:var(--cyan)">Real Businesses.</em></h3>
+      <div style="display:flex;gap:30px;flex-wrap:wrap;margin-top:16px">
+        <div style="text-align:center"><h2 style="color:var(--cyan)">40%</h2><p style="font-size:12px;color:var(--gray)">Higher Operational Efficiency</p></div>
+        <div style="text-align:center"><h2 style="color:var(--cyan)">30%</h2><p style="font-size:12px;color:var(--gray)">Faster Decision Making</p></div>
+        <div style="text-align:center"><h2 style="color:var(--cyan)">25%</h2><p style="font-size:12px;color:var(--gray)">Lower Operating Costs</p></div>
+        <div style="text-align:center"><h2 style="color:var(--cyan)">3x</h2><p style="font-size:12px;color:var(--gray)">Greater Business Agility</p></div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="showPage('contact')">Request Demo &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PRODUCTS PAGE ═══════════════════════ -->
+<div id="page-products" class="page">
+  <div class="hero" style="min-height:55vh">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-label">YEAM PRODUCTS</div>
+      <h1>Enterprise Products That <em>Power Growth</em></h1>
+      <p>A unified suite of intelligent enterprise products to streamline operations, empower people and accelerate your business forward.</p>
+      <div class="btn-row">
+        <button class="btn-primary">Explore Products &rarr;</button>
+        <button class="btn-outline" onclick="showPage('contact')"><i class="fa fa-calendar"></i> Book Demo</button>
+      </div>
+    </div>
+    <div class="hero-visual" style="width:36%">
+      <img src="data:image/jpeg;base64,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" alt="YEAM Y Logo" style="border-radius:20px">
+    </div>
+  </div>
+
+  <section>
+    <div class="prod-tabs">
+      <div class="prod-tab active" onclick="filterProducts('all',this)">All Products</div>
+      <div class="prod-tab" onclick="filterProducts('core',this)">Core Business</div>
+      <div class="prod-tab" onclick="filterProducts('people',this)">People & Operations</div>
+      <div class="prod-tab" onclick="filterProducts('sales',this)">Sales & Customer</div>
+      <div class="prod-tab" onclick="filterProducts('industry',this)">Industry Solutions</div>
+      <div class="prod-tab" onclick="filterProducts('analytics',this)">Analytics & AI</div>
+    </div>
+    <div class="prod-grid" id="products-grid">
+      <div class="prod-card" data-cat="core"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-layer-group"></i></div><h4>YEAM ERP</h4><p>A complete, integrated ERP for modern enterprises.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="people"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-users"></i></div><h4>HRM & Payroll</h4><p>Empower your people from hire to retire.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="sales"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-cash-register"></i></div><h4>POS</h4><p>Seamless point-of-sale for every business.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="core"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-file-lines"></i></div><h4>DMS</h4><p>Manage, store and secure your business documents.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="core"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-calculator"></i></div><h4>Accounting</h4><p>Simplify finance. Stay in control.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="sales"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-handshake"></i></div><h4>CRM</h4><p>Build stronger customer relationships.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="core"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-boxes-stacked"></i></div><h4>Inventory</h4><p>Optimize stock and resources in real time.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="industry"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-hospital"></i></div><h4>Hospital Management</h4><p>Smarter care. Better patient outcomes.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="analytics"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-chart-pie"></i></div><h4>Analytics</h4><p>Turn data into decisions.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+      <div class="prod-card" data-cat="analytics"><div class="corner-arrow"><i class="fa fa-arrow-right"></i></div><div class="card-icon"><i class="fa fa-robot"></i></div><h4>AI Assistant</h4><p>Your intelligent business copilot.</p><span class="learn-more">Learn More <i class="fa fa-arrow-right"></i></span></div>
+    </div>
+  </section>
+
+  <div class="stats-bar" style="margin:0 5% 40px">
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-cube"></i></div><div><h3>10</h3><p>Enterprise Products</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-gears"></i></div><div><h3>100+</h3><p>Key Features</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-building"></i></div><div><h3>50+</h3><p>Industries Supported</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-users"></i></div><div><h3>500+</h3><p>Global Clients</p></div></div>
+    <div class="stat-sep"></div>
+    <div class="stat-item"><div class="stat-icon"><i class="fa fa-shield-halved"></i></div><div><h3>99.9%</h3><p>Enterprise-Grade Uptime</p></div></div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="sec-label">REAL RESULTS. REAL GROWTH.</div>
+    <h2 class="sec-title">Trusted by Businesses <em>Worldwide</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px">
+      <div class="card" style="border-color:rgba(0,200,255,.25)">
+        <p style="font-size:13.5px;color:var(--gray);line-height:1.7;font-style:italic">"YEAM ERP streamlined our operations and improved efficiency across 12 countries."</p>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:16px"><div style="width:36px;height:36px;border-radius:50%;background:rgba(0,200,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px">👨‍💼</div><div><div style="font-size:13px;font-weight:700">Michael Tan</div><div style="font-size:11.5px;color:var(--cyan)">CEO, Global Manufacturing Group</div></div></div>
+      </div>
+      <div class="card" style="border-color:rgba(0,200,255,.25)">
+        <p style="font-size:13.5px;color:var(--gray);line-height:1.7;font-style:italic">"The HRM & Payroll system has transformed how we support our people."</p>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:16px"><div style="width:36px;height:36px;border-radius:50%;background:rgba(0,200,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px">👩‍💼</div><div><div style="font-size:13px;font-weight:700">Sarah Lee</div><div style="font-size:11.5px;color:var(--cyan)">CHRO, Regional Healthcare Network</div></div></div>
+      </div>
+      <div class="card" style="border-color:rgba(0,200,255,.25)">
+        <p style="font-size:13.5px;color:var(--gray);line-height:1.7;font-style:italic">"YEAM's integrated platform gives us real-time visibility and better decision making."</p>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:16px"><div style="width:36px;height:36px;border-radius:50%;background:rgba(0,200,255,.15);display:flex;align-items:center;justify-content:center;font-size:16px">👨‍💼</div><div><div style="font-size:13px;font-weight:700">David Kumar</div><div style="font-size:11.5px;color:var(--cyan)">CFO, Retail Enterprise</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <div><h3>Ready to Transform Your Business?</h3><p>Explore our products or book a personalized demo with our experts.</p></div>
+    <div class="btn-row">
+      <button class="btn-primary">Explore Products &rarr;</button>
+      <button class="btn-outline" onclick="showPage('contact')"><i class="fa fa-calendar"></i> Book Demo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ INDUSTRIES PAGE ═══════════════════════ -->
+<div id="page-industries" class="page">
+  <div class="hero" style="min-height:50vh">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-label">INDUSTRY SOLUTIONS</div>
+      <h1>Built for Every Industry. <br>Engineered for <em>What's Next.</em></h1>
+      <p>Pre-configured workflows and best practices for your industry, with the flexibility to adapt to your unique needs.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="showPage('contact')">Request Demo &rarr;</button>
+        <button class="btn-outline" onclick="showPage('solutions')">Explore Solutions</button>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div class="card"><div style="font-size:48px;margin-bottom:16px">🏥</div><h4 style="font-size:18px">Healthcare</h4><p>Better care. Smarter operations. Connect clinical, administrative and financial workflows for improved patient outcomes and operational excellence.</p><span class="learn-more" style="margin-top:16px">Explore Healthcare Solutions <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div style="font-size:48px;margin-bottom:16px">🛒</div><h4 style="font-size:18px">Retail</h4><p>Seamless commerce at every touchpoint. Unify your inventory, POS, e-commerce and customer data for a truly connected retail experience.</p><span class="learn-more" style="margin-top:16px">Explore Retail Solutions <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div style="font-size:48px;margin-bottom:16px">⚙️</div><h4 style="font-size:18px">Manufacturing</h4><p>Smarter production for a stronger tomorrow. Plan, produce and deliver with greater efficiency using real-time manufacturing intelligence.</p><span class="learn-more" style="margin-top:16px">Explore Manufacturing Solutions <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div style="font-size:48px;margin-bottom:16px">🎓</div><h4 style="font-size:18px">Education</h4><p>Empowering the next generation. Manage students, staff, finances and resources on a single connected platform built for educational institutions.</p><span class="learn-more" style="margin-top:16px">Explore Education Solutions <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div style="font-size:48px;margin-bottom:16px">🏛️</div><h4 style="font-size:18px">Government</h4><p>Digital services for greater impact. Modernize government operations with secure, compliant and citizen-centric digital solutions.</p><span class="learn-more" style="margin-top:16px">Explore Government Solutions <i class="fa fa-arrow-right"></i></span></div>
+      <div class="card"><div style="font-size:48px;margin-bottom:16px">🌾</div><h4 style="font-size:18px">Agriculture</h4><p>Sustainable growth for stronger communities. Connect farm management, supply chain and financial operations for modern agriculture.</p><span class="learn-more" style="margin-top:16px">Explore Agriculture Solutions <i class="fa fa-arrow-right"></i></span></div>
+    </div>
+  </section>
+  <div class="cta-banner">
+    <div><h3>Find the Right Solution for <em style="font-style:normal;color:var(--cyan)">Your Industry</em></h3><p>Our industry experts are ready to help you build the right solution.</p></div>
+    <div class="btn-row"><button class="btn-primary" onclick="showPage('contact')">Talk to an Expert &rarr;</button></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ RESOURCES PAGE ═══════════════════════ -->
+<div id="page-resources" class="page">
+  <div class="hero" style="min-height:50vh">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-label">RESOURCES</div>
+      <h1>Insights, Guides &<br><em>Enterprise Resources</em></h1>
+      <p>Explore expert insights, industry research, practical guides and real-world stories to help you build a smarter, more connected enterprise.</p>
+    </div>
+  </div>
+
+  <div class="search-bar" style="margin-top:30px">
+    <input type="text" placeholder="Search resources, topics, or keywords...">
+    <button>Search &rarr;</button>
+  </div>
+  <div class="filter-tabs">
+    <div class="filter-tab active">All</div>
+    <div class="filter-tab"><i class="fa fa-pen"></i> Blog</div>
+    <div class="filter-tab"><i class="fa fa-chart-bar"></i> Case Studies</div>
+    <div class="filter-tab"><i class="fa fa-file"></i> White Papers</div>
+    <div class="filter-tab"><i class="fa fa-book-open"></i> Product Guides</div>
+    <div class="filter-tab"><i class="fa fa-video"></i> Webinars</div>
+    <div class="filter-tab"><i class="fa fa-industry"></i> Industry</div>
+  </div>
+
+  <section>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div><div class="sec-label">FEATURED CONTENT</div><h2 class="sec-title" style="margin:0">Featured Blog Posts</h2></div>
+      <a href="#" style="color:var(--cyan);font-size:13.5px;font-weight:600">View All Blog Posts &rarr;</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card"><div class="blog-thumb">🤖<span class="blog-tag">AI & AUTOMATION</span></div><div class="blog-body"><h5>How AI is Reshaping Enterprise ERP in 2025</h5><p>Explore key trends, real-world use cases and what's next for AI-powered enterprise systems.</p><div class="blog-meta"><span><i class="fa fa-calendar"></i> Apr 15, 2025</span><span>8 min read</span></div></div></div>
+      <div class="blog-card"><div class="blog-thumb">🚢<span class="blog-tag">INDUSTRY INSIGHTS</span></div><div class="blog-body"><h5>Building a More Resilient Supply Chain with Real-Time Data</h5><p>Learn how connected data and intelligent platforms help enterprises respond faster.</p><div class="blog-meta"><span><i class="fa fa-calendar"></i> Apr 10, 2025</span><span>6 min read</span></div></div></div>
+      <div class="blog-card"><div class="blog-thumb">👥<span class="blog-tag">DIGITAL TRANSFORMATION</span></div><div class="blog-body"><h5>People-Centric Technology: Empowering the Modern Workforce</h5><p>Discover how the right technology creates happier, more productive teams.</p><div class="blog-meta"><span><i class="fa fa-calendar"></i> Apr 5, 2025</span><span>7 min read</span></div></div></div>
+      <div class="blog-card"><div class="blog-thumb">🌱<span class="blog-tag">SUSTAINABILITY</span></div><div class="blog-body"><h5>Technology for a More Sustainable Future</h5><p>How intelligent enterprise solutions can help organizations achieve their sustainability goals.</p><div class="blog-meta"><span><i class="fa fa-calendar"></i> Mar 28, 2025</span><span>6 min read</span></div></div></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="split-3">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><div class="sec-label" style="margin:0">CASE STUDIES</div><a href="#" style="color:var(--cyan);font-size:12px;font-weight:600">View All &rarr;</a></div>
+        <div class="res-item"><div class="res-thumb">🏭</div><div class="res-info"><h6>Global Manufacturer Achieves 40% Faster Operations</h6><p>Manufacturing | Apr 2025</p></div></div>
+        <div class="res-item"><div class="res-thumb">🛒</div><div class="res-info"><h6>Retail Chain Unifies Operations Across 500+ Stores</h6><p>Retail | Mar 2025</p></div></div>
+        <div class="res-item"><div class="res-thumb">🏛️</div><div class="res-info"><h6>Government Agency Modernizes with YEAM Cloud</h6><p>Government | Feb 2025</p></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><div class="sec-label" style="margin:0">WHITE PAPERS</div><a href="#" style="color:var(--cyan);font-size:12px;font-weight:600">View All &rarr;</a></div>
+        <div class="res-item"><div class="res-thumb">📄</div><div class="res-info"><h6>The Future of Connected Enterprises</h6><p>In-depth research and frameworks for strategic decision-making.</p><span class="res-badge pdf-badge">PDF</span></div></div>
+        <div class="res-item"><div class="res-thumb">📄</div><div class="res-info"><h6>AI in Enterprise Operations</h6><p>Opportunities, challenges and a practical roadmap.</p><span class="res-badge pdf-badge">PDF</span></div></div>
+        <div class="res-item"><div class="res-thumb">📄</div><div class="res-info"><h6>Sustainability Through Technology</h6><p>How digital transformation accelerates a greener future.</p><span class="res-badge pdf-badge">PDF</span></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><div class="sec-label" style="margin:0">PRODUCT GUIDES</div><a href="#" style="color:var(--cyan);font-size:12px;font-weight:600">View All &rarr;</a></div>
+        <div class="res-item"><div class="res-thumb">📖</div><div class="res-info"><h6>YEAM ERP Buyer's Guide</h6><p>Key features, benefits and evaluation checklist. 12 pages</p><span class="res-badge">Guide</span></div></div>
+        <div class="res-item"><div class="res-thumb">📖</div><div class="res-info"><h6>Implementation Guide</h6><p>A step-by-step guide for successful deployment. 28 pages</p><span class="res-badge">Guide</span></div></div>
+        <div class="res-item"><div class="res-thumb">📖</div><div class="res-info"><h6>Integration Best Practices</h6><p>Connect, extend and unlock greater value. 16 pages</p><span class="res-badge">Guide</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="sec-label">FAQ</div>
+    <h2 class="sec-title" style="margin-bottom:20px">Frequently Asked Questions</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">General Questions <i class="fa fa-chevron-down"></i></div><div class="faq-a">Learn about YEAM and our solutions. We provide enterprise-grade ERP, CRM, HRM, Analytics and AI solutions for businesses of all sizes across 30+ industries.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Implementation <i class="fa fa-chevron-down"></i></div><div class="faq-a">Deployment timelines and best practices. Most implementations are completed within 4–12 weeks depending on scope. We provide dedicated onboarding support throughout.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Pricing & Licensing <i class="fa fa-chevron-down"></i></div><div class="faq-a">Plans, licensing options and ROI. We offer flexible subscription-based pricing with monthly and annual options. Contact our sales team for a custom quote tailored to your business.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Technical Support <i class="fa fa-chevron-down"></i></div><div class="faq-a">Support, security and system requirements. Our enterprise support includes 24/7 monitoring, dedicated account managers and 99.9% uptime SLA guarantee.</div></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="split-2">
+      <div>
+        <div class="sec-label">STAY UPDATED</div>
+        <h2 class="sec-title">Get the <em>Latest Insights</em></h2>
+        <p class="sec-sub">Subscribe to our newsletter for expert insights, new resources and product updates.</p>
+        <div class="newsletter-row">
+          <input type="email" placeholder="Enter your email address">
+          <button>Subscribe &rarr;</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:140px"><div class="card-icon"><i class="fa fa-envelope"></i></div><h4>Latest Insights</h4><p>Delivered to your inbox weekly</p></div>
+        <div class="card" style="flex:1;min-width:140px"><div class="card-icon"><i class="fa fa-chart-line"></i></div><h4>Industry Trends</h4><p>Research and analysis</p></div>
+        <div class="card" style="flex:1;min-width:140px"><div class="card-icon"><i class="fa fa-bell"></i></div><h4>Product Updates</h4><p>New features and events</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <div><h3>Ready to See <em style="font-style:normal;color:var(--cyan)">YEAM</em> in Action?</h3><p>Discover how our intelligent enterprise solutions can help your business work smarter.</p></div>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="showPage('products')">Explore YEAM Products &rarr;</button>
+      <button class="btn-outline" onclick="showPage('contact')">Request a Demo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ CONTACT PAGE ═══════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="hero" style="min-height:50vh">
+    <div class="hero-bg"></div>
+    <div class="hero-content" style="max-width:620px">
+      <div class="hero-label">CONTACT <span>|</span> PARTNER <span>|</span> GET A DEMO</div>
+      <h1>Let's Build Your <em>Digital Future.</em></h1>
+      <p>Discover how YEAM's intelligent enterprise solutions can help you work smarter, grow faster, and build a more connected tomorrow.</p>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:24px">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray)"><i class="fa fa-users" style="color:var(--cyan)"></i>Talk to Experts</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray)"><i class="fa fa-desktop" style="color:var(--cyan)"></i>See It in Action</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray)"><i class="fa fa-bolt" style="color:var(--cyan)"></i>Explore Solutions</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray)"><i class="fa fa-chart-line" style="color:var(--cyan)"></i>Start Your Journey</div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="contact-grid">
+      <!-- LEFT: CONTACT INFO + OFFICES -->
+      <div>
+        <div class="sec-label">GET IN TOUCH</div>
+        <div class="contact-info-card"><div class="ci-icon"><i class="fa fa-envelope"></i></div><div><div class="ci-title">Email Us</div><div class="ci-text">rakibulislamtusar7@gmail.com</div><div class="ci-sub">We typically respond within 1 business day.</div></div></div>
+        <div class="contact-info-card"><div class="ci-icon"><i class="fa fa-phone"></i></div><div><div class="ci-title">Call Us</div><div class="ci-text">+880 16122 64439</div><div class="ci-sub">Mon – Fri, 9:00 AM – 6:00 PM (EST)</div></div></div>
+        <div class="contact-info-card"><div class="ci-icon"><i class="fa fa-comment"></i></div><div><div class="ci-title">Live Chat</div><div class="ci-text" style="cursor:pointer">Chat with our team</div><div class="ci-sub">Available on weekdays</div></div></div>
+        <div class="contact-info-card"><div class="ci-icon"><i class="fa fa-handshake"></i></div><div><div class="ci-title">Partnership Inquiries</div><div class="ci-text">partners@yeam.com</div><div class="ci-sub">Let's create greater possibilities together.</div></div></div>
+        <div style="margin-top:20px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:14px"><span class="sec-label" style="margin:0">OUR OFFICES</span><a href="#" style="color:var(--cyan);font-size:12px;font-weight:600">View All &rarr;</a></div>
+          <div class="office-card"><div class="office-img">🗽</div><div><div class="office-name">New York, HQ</div><div class="office-addr">1234 Innovation Drive, New York, NY 10001, USA</div></div></div>
+          <div class="office-card"><div class="office-img">🇬🇧</div><div><div class="office-name">London</div><div class="office-addr">1 Kingdom Street, London EC2N 6BF, UK</div></div></div>
+          <div class="office-card"><div class="office-img">🇸🇬</div><div><div class="office-name">Singapore</div><div class="office-addr">8 Marina View, Singapore 018960</div></div></div>
+          <div class="office-card"><div class="office-img">🗼</div><div><div class="office-name">Tokyo</div><div class="office-addr">1-1 Marunouchi, Chiyoda-ku, Tokyo 100-0005</div></div></div>
+        </div>
+      </div>
+
+      <!-- CENTER: GLOBAL PRESENCE + WHY -->
+      <div>
+        <div class="card" style="margin-bottom:20px;border-color:rgba(0,200,255,.25)">
+          <h4>A Global Team, Closer to You.</h4>
+          <p style="margin-top:8px;font-size:13px;color:var(--gray)">We work with forward-thinking organizations around the world to build a more connected future.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:20px;text-align:center">
+            <div><h3 style="color:var(--cyan)">500+</h3><p style="font-size:11.5px;color:var(--gray)">Global Clients</p></div>
+            <div><h3 style="color:var(--cyan)">30+</h3><p style="font-size:11.5px;color:var(--gray)">Countries & Regions</p></div>
+            <div><h3 style="color:var(--cyan)">24/7</h3><p style="font-size:11.5px;color:var(--gray)">Customer Support</p></div>
+          </div>
+        </div>
+        <div class="sec-label">WHY TALK TO YEAM?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="card"><div class="card-icon" style="margin-bottom:10px"><i class="fa fa-bullseye"></i></div><h4 style="font-size:13px">Tailored Solutions</h4><p style="font-size:12px">Built around your business goals</p></div>
+          <div class="card"><div class="card-icon" style="margin-bottom:10px"><i class="fa fa-industry"></i></div><h4 style="font-size:13px">Industry Expertise</h4><p style="font-size:12px">Deep experience across key sectors</p></div>
+          <div class="card"><div class="card-icon" style="margin-bottom:10px"><i class="fa fa-wrench"></i></div><h4 style="font-size:13px">End-to-End Support</h4><p style="font-size:12px">From consultation to long-term success</p></div>
+          <div class="card"><div class="card-icon" style="margin-bottom:10px"><i class="fa fa-rocket"></i></div><h4 style="font-size:13px">Faster Time to Value</h4><p style="font-size:12px">Proven methodology for measurable results</p></div>
+        </div>
+        <div style="margin-top:20px">
+          <div class="sec-label">FAQ</div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does a demo take? <i class="fa fa-chevron-down"></i></div><div class="faq-a">Our demos typically run 30–60 minutes and are tailored to your specific industry and business needs.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is the demo customized for my industry? <i class="fa fa-chevron-down"></i></div><div class="faq-a">Yes! Every demo is personalized to your industry, showing the most relevant features and workflows for your business.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you offer free consultations? <i class="fa fa-chevron-down"></i></div><div class="faq-a">Absolutely. We offer a free initial consultation to understand your needs and identify where YEAM can create the most impact for your business.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can you help with implementation? <i class="fa fa-chevron-down"></i></div><div class="faq-a">Yes, we provide full implementation support including project management, training, data migration and go-live support.</div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: DEMO FORM -->
+      <div>
+        <div class="form-card">
+          <div class="step-badge">STEP 1 OF 2</div>
+          <h3>Request a Demo</h3>
+          <p style="font-size:13px;color:var(--gray);margin-top:6px">Tell us about your needs, and our experts will get in touch to schedule a personalized demo.</p>
+          <div class="form-grid">
+            <div class="form-group"><label>Full Name <span class="req">*</span></label><input type="text" placeholder="Rakibul Islam Tusar"></div>
+            <div class="form-group"><label>Company Name <span class="req">*</span></label><input type="text" placeholder="Your Company"></div>
+            <div class="form-group"><label>Work Email <span class="req">*</span></label><input type="email" placeholder="you@company.com"></div>
+            <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+880 16122 64439"></div>
+            <div class="form-group"><label>Product Interest <span class="req">*</span></label><select><option value="">Select a product or solution</option><option>YEAM ERP</option><option>HRM & Payroll</option><option>POS</option><option>DMS</option><option>CRM</option><option>Analytics</option><option>AI Assistant</option></select></div>
+            <div class="form-group"><label>Industry</label><select><option value="">Select your industry</option><option>Healthcare</option><option>Retail</option><option>Manufacturing</option><option>Education</option><option>Government</option><option>Agriculture</option></select></div>
+            <div class="form-group full"><label>Tell Us About Your Needs <span class="req">*</span></label><textarea placeholder="e.g. current challenges, goals, or specific use cases..." id="needs-txt" oninput="updateCount(this)"></textarea><div class="char-count"><span id="cnt">0</span>/500</div></div>
+            <div class="checkbox-row"><input type="checkbox" id="consent"><label for="consent">I agree to YEAM's <a href="#">Privacy Policy</a> and consent to be contacted by your team.</label></div>
+            <button class="btn-full" onclick="submitDemo()">Request Demo &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST LOGOS -->
+  <section style="padding-top:0">
+    <div class="sec-label">TRUSTED BY INDUSTRY LEADERS</div>
+    <div class="trust-grid">
+      <div class="trust-item">🪟 Microsoft</div>
+      <div class="trust-item">☁️ AWS</div>
+      <div class="trust-item">🔵 Google</div>
+      <div class="trust-item">🔴 Oracle</div>
+      <div class="trust-item">⚡ Siemens</div>
+      <div class="trust-item">🚗 Toyota</div>
+      <div class="trust-item">🏦 HSBC</div>
+      <div class="trust-item">💊 Pfizer</div>
+      <div class="trust-item">🥤 Coca-Cola</div>
+      <div class="trust-item">📱 Samsung</div>
+      <div class="trust-item">🛒 Walmart</div>
+      <div class="trust-item">💼 Accenture</div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <div><h3>Ready to Transform Your Business?</h3><p>Our team is here to help you explore the possibilities with YEAM.</p></div>
+    <div class="btn-row">
+      <button class="btn-primary" onclick="document.querySelector('.form-card').scrollIntoView({behavior:'smooth'})">Request a Demo &rarr;</button>
+      <button class="btn-outline">Contact Sales</button>
+    </div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray)"><i class="fa fa-shield" style="color:var(--cyan)"></i>Trusted by 500+ Global Clients</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray)"><i class="fa fa-globe" style="color:var(--cyan)"></i>Active in 30+ Countries</div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray)"><i class="fa fa-headset" style="color:var(--cyan)"></i>Dedicated Support 24/7</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="data:image/png;base64,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" alt="YEAM" class="footer-logo" style="height:30px;margin-bottom:8px">
+      <div class="footer-tagline">ADVANCING THE CONNECTED FUTURE</div>
+      <p style="font-size:13px;color:var(--gray);margin-top:12px;max-width:220px;line-height:1.6">Building a smarter, more connected tomorrow through intelligent enterprise technology.</p>
+    </div>
+    <div>
+      <h6>Quick Links</h6>
+      <ul>
+        <li><a href="#" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" onclick="showPage('about')">About</a></li>
+        <li><a href="#" onclick="showPage('solutions')">Solutions</a></li>
+        <li><a href="#" onclick="showPage('products')">Products</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6>&nbsp;</h6>
+      <ul>
+        <li><a href="#" onclick="showPage('industries')">Industries</a></li>
+        <li><a href="#" onclick="showPage('resources')">Resources</a></li>
+        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6>Contact Us</h6>
+      <div class="footer-contact-item"><i class="fa fa-envelope"></i> rakibulislamtusar7@gmail.com</div>
+      <div class="footer-contact-item"><i class="fa fa-phone"></i> +880 16122 64439</div>
+      <div class="footer-contact-item"><i class="fa fa-location-dot"></i> Dhaka, Bangladesh</div>
+      <h6 style="margin-top:16px">Follow Us</h6>
+      <div class="social-links">
+        <a class="social-link" href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a class="social-link" href="#"><i class="fab fa-x-twitter"></i></a>
+        <a class="social-link" href="#"><i class="fab fa-youtube"></i></a>
+        <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <div>
+      <h6>Stay Updated</h6>
+      <p style="font-size:13px;color:var(--gray);margin-bottom:12px;line-height:1.6">Get the latest insights, product updates and industry stories.</p>
+      <div style="display:flex;gap:8px">
+        <input type="email" placeholder="Enter your email address" style="flex:1;padding:10px 12px;font-size:13px">
+        <button style="background:var(--cyan);color:var(--bg);border:none;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:700;font-size:16px;transition:.2s">&rarr;</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 YEAM Technology Ltd. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── PAGE NAVIGATION ──
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const pg = document.getElementById('page-' + name);
+  if(pg) { pg.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  const navEl = document.getElementById('nav-' + name);
+  if(navEl) navEl.classList.add('active');
+  document.getElementById('mobile-menu').style.display = 'none';
+  return false;
+}
+
+// ── MOBILE MENU ──
+function toggleMobileMenu() {
+  const m = document.getElementById('mobile-menu');
+  m.style.display = m.style.display === 'none' ? 'block' : 'none';
+}
+
+// ── FAQ ACCORDION ──
+function toggleFaq(el) {
+  const ans = el.nextElementSibling;
+  const icon = el.querySelector('.fa');
+  const isOpen = ans.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q .fa').forEach(i => i.style.transform = '');
+  if(!isOpen) { ans.classList.add('open'); icon.style.transform = 'rotate(180deg)'; }
+}
+
+// ── PRODUCT FILTER ──
+function filterProducts(cat, tabEl) {
+  document.querySelectorAll('.prod-tab').forEach(t => t.classList.remove('active'));
+  tabEl.classList.add('active');
+  document.querySelectorAll('.prod-card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+
+// ── COUNTER ANIMATION ──
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    const suffix = target >= 10 ? '+' : (target === 1 ? 'M+' : 'B+');
+    let current = 0;
+    const step = Math.max(1, Math.floor(target / 40));
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current + suffix;
+      if(current >= target) clearInterval(timer);
+    }, 40);
+  });
+}
+
+// ── FORM HELPERS ──
+function updateCount(el) {
+  document.getElementById('cnt').textContent = el.value.length;
+}
+function submitDemo() {
+  alert('Thank you! Our team will be in touch within 1 business day to schedule your personalized demo.');
+}
+
+// ── FILTER TABS (Resources) ──
+document.querySelectorAll('.filter-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    this.closest('.filter-tabs').querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// ── INIT ──
+window.addEventListener('load', () => {
+  setTimeout(animateCounters, 500);
+});
+
+// ── SCROLL NAV SHADOW ──
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 30 ? '0 4px 30px rgba(0,0,0,.5)' : 'none';
+});
+</script>
+</body>
+</html>
